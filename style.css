@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+*, 
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+:root {
+    --very-light-grayish-blue: hsl(240, 78%, 98%);
+    --light-grayish-blue: hsl(234, 14%, 74%);
+    --grayish-blue: hsl(233, 13%, 49%);
+    --dark-grayish-blue: hsl(232, 13%, 33%);
+
+    --linear-first: hsl(236, 72%, 79%); 
+    --linear-sec: hsl(237, 63%, 64%);
+
+}
+
+body {
+    margin: 0;
+    padding-top: 0.01px;
+    color: var(--dark-grayish-blue);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    background: url(images/bg-bottom.svg), url(images/bg-top.svg), var(--very-light-grayish-blue);
+    background-repeat: no-repeat;
+    background-position: left bottom, right top;
+    background-attachment: fixed;
+    
+}
+
+/* hide */
+.hide {
+    display: none;
+}
+
+.container {
+    width: 900px;
+    margin: 0 auto;
+}
+/* header */
+
+.header {
+    text-align: center;
+    color: var(--grayish-blue);
+}
+
+.header .header-title {
+    margin: 50px auto 30px;
+}
+
+/* Switcher */
+
+.price-type-switcher {
+    display: flex;
+    justify-content: center;
+    color: var(--light-grayish-blue);
+}
+
+.toggle-bar {
+    display: flex;
+    padding: 0 3px;
+    align-items: center;
+    margin: 0 20px;
+    width: 45px;
+    height: 24px;
+    border-radius: 20px;
+    background: linear-gradient(to right, var(--linear-first), var(--linear-sec));
+}
+
+.toggle-bar:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
+.toggle-bar #toggle-check {
+    display: none;
+}
+
+.toggle-bar .toggle-slider {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius:50%;
+    transition: all 300ms;
+    transform: translateX(19px);
+}
+
+.toggle-bar #toggle-check:checked ~ .toggle-slider {
+    transform: translateX(0);
+}
+
+/* Cards */
+
+.main-cards {
+    margin-top: 30px;
+    display: grid;
+    align-items: center;
+    grid-template-areas: "basic pro master" ;
+    grid-template-rows: 400px;
+} 
+
+.card {
+    width: 100%;
+    height: 340px;
+    text-align: center;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: center;
+    color: var(--grayish-blue);
+    background-color: white;
+}
+
+.card > * {
+    margin: 0;
+}
+
+
+
+.price {
+    font-size: 3em;
+    margin-top: 15px;    
+    color: var(--dark-grayish-blue);
+}
+
+.description > p {
+    padding: 12px;
+    margin: 0;
+    border-bottom: 1px solid var(--light-grayish-blue) ;
+}
+
+.description .storage {
+    margin-top: 20px;
+    border-top: 1px solid var(--light-grayish-blue);
+}
+
+.button {
+    margin-top: 25px;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    background: linear-gradient(to right, var(--linear-first), var(--linear-sec));
+    
+}
+
+.button:hover {
+    border: 1px solid var(--linear-sec);
+    padding: 9px;
+    color: var(--linear-sec);
+    background: transparent;
+}
+
+.card.basic {
+    grid-area: basic;
+    border-radius: 10px 0 0 10px;
+}
+
+.card.pro {
+    grid-area: pro;
+    height: 368px;
+    z-index: 2;
+    color: white;
+    background: linear-gradient( var(--linear-first), var(--linear-sec));
+}
+
+.card.pro .price {
+    color: white;
+}
+
+.card.pro .description > p {
+    border-color: var(--light-grayish-blue);
+}
+
+.card.pro .button {
+    background:white;
+    color: var(--linear-sec);
+}
+
+.card.pro .button:hover {
+    background: transparent;
+    border-color: white;
+    color: white;
+}
+
+
+.card.master {
+    grid-area: master;
+    border-radius: 0 10px 10px 0;
+} 
+
+@media screen and (max-width: 900px) {
+
+    body {
+        /* background-position: top; */
+        background-size: 0, 40% 30%;
+        background-attachment: scroll;
+    }
+
+    .container {
+        width: 80%;
+    }
+
+    .header-title {
+        margin-bottom: 30px;
+    }
+
+    .main-cards {
+        grid-template-areas: "basic" "pro" "master";
+        gap: 40px;
+        margin-top: 40px;
+        margin-bottom: 50px;
+    }
+
+    .card {
+        /* width: 100%; */
+        padding: 50px;
+        height: 100%;
+    }
+
+    .card.pro {
+        height: 340px;
+    }
+}
